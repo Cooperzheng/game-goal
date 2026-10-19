@@ -1,8 +1,18 @@
 # Game Goal
 
+简体中文 | [English](README.en.md)
+
 用于起草、审阅和精简游戏开发 Goal 的中文 Skill，覆盖功能范围、玩家体验、美术视听目标、验证证据和停止条件。
 
 ## 安装
+
+使用 Skills CLI：
+
+```sh
+npx skills add Cooperzheng/game-goal --skill game-goal
+```
+
+也可以手动安装：
 
 下载本仓库，将 `SKILL.md`、`agents/` 和 `references/` 放入宿主的 `skills/game-goal/` 目录。Codex 可使用 `$CODEX_HOME/skills/game-goal/`；未自定义时通常为 `~/.codex/skills/game-goal/`。重新打开会话后检查 Skill 是否可用。
 
@@ -37,3 +47,7 @@ $game-goal 帮我精简这份 Goal，保留已确认边界与具体案例。
 - [调用配置](agents/openai.yaml)：关闭隐式调用。
 
 模板应按项目取舍，未知项保留待定；测试和评分不能替代真实游玩与用户判断。范例不构成品质保证。
+
+## 许可
+
+[MIT](LICENSE)。Copyright (c) 2026 Cooperzheng。再分发时保留许可证。
