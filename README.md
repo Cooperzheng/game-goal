@@ -2,7 +2,9 @@
 
 简体中文 | [English](README.en.md)
 
-用于起草、审阅和精简游戏开发 Goal 的中文 Skill，覆盖功能范围、玩家体验、美术视听目标、验证证据和停止条件。
+用于起草、审阅和精简游戏开发 Goal 的中文 Skill：把试玩反馈或游戏想法整理成交给 AI 长时间执行的 Goal，写清功能范围、玩家体验、美术视听目标、验收证据、停止条件，以及本次执行的编排档位（L0–L3）、授权与留存。
+
+适用于支持 [Agent Skills](https://agentskills.io) 的宿主。Claude Code、Codex 有专门的执行附录，其他宿主按通用附录降级。
 
 ## 安装
 
@@ -12,41 +14,67 @@
 npx skills add Cooperzheng/game-goal --skill game-goal
 ```
 
-也可以手动安装：
+也可以手动安装：下载本仓库，将 `SKILL.md`、`agents/` 和 `references/` 放入宿主的 skill 目录，目录名保持 `game-goal`。
 
-下载本仓库，将 `SKILL.md`、`agents/` 和 `references/` 放入宿主的 `skills/game-goal/` 目录。Codex 可使用 `$CODEX_HOME/skills/game-goal/`；未自定义时通常为 `~/.codex/skills/game-goal/`。重新打开会话后检查 Skill 是否可用。
+- Codex：`~/.agents/skills/game-goal/`（部分版本也读取 `$CODEX_HOME/skills/game-goal/`）。
+- Claude Code：`~/.claude/skills/game-goal/`，或项目内的 `.claude/skills/game-goal/`。
+- 其他宿主：放入其 skill 目录。
+
+在多个宿主同时使用时，保留一份副本，其他位置用目录链接指向它。重新打开会话后检查 Skill 是否可用。
 
 ## 使用
 
-明确点名调用，例如：
+明确要起草、审阅或精简 Goal（交给 AI 长时间持续执行的任务文档）时触发，不必说出 Skill 名字，也可以点名调用。只要普通方案、处理反馈或做小修改时不会触发；AI 判断某项需要用 Goal 实现时，会先说明，再写 Goal 给你看。
 
 ```text
+把这些试玩反馈整理成 goal：1. 冲刺手感拖沓；2. Boss 关太难。
 $game-goal 帮我起草一个游戏 MVP 的 Goal，先明确玩法、体验、美术目标和验收证据。
-$game-goal 帮我检查这份 Goal，只补关键缺口，保持精简。
-$game-goal 帮我精简这份 Goal，保留已确认边界与具体案例。
+/game-goal 帮我检查这份 Goal，只补关键缺口，保持精简。
 ```
 
-默认关闭隐式调用。此 Skill 用于设计参考与查漏补缺；调用本身不授权开发、修改项目、发布或启动自主循环。宿主的权限、预算和停止规则优先。
+触发后先只读诊断，再给出 Goal：开头是“需要你确认”（执行宿主、编排档位、用量与留存、默认决定等），确认前不改文件、不启动编排。Goal 末尾固定一张结果表（项、反馈编号、状态、证据、差距），交付时对话里给的就是这张表。宿主的权限、预算和停止规则优先。
+
+想改成只在点名时使用：
+
+- Codex：把 `agents/openai.yaml` 的 `allow_implicit_invocation` 改为 `false`。
+- Claude Code：在 settings 里设 `"skillOverrides": {"game-goal": "name-only"}`（只列名字，说“用 game-goal”仍可调用），或 `"user-invocable-only"`（只能输入 `/game-goal`）。
+
+## 编排档位
+
+| 档位 | 允许的编排 |
+|---|---|
+| L0 | 只有主会话 |
+| L1 | 加子代理：只读评审、调研、文件不重叠的独立模块（默认） |
+| L2 | 加限定场景的脚本化编排，如评审团、大范围调研、批量检查 |
+| L3 | 加会话级自主编排，只用于调研、审计、终验，须用户批准 |
+
+Goal 按任务推荐档位并写明理由；确认块会写清子代理、脚本化编排、会话级自主编排各用不用、用在哪、上限和预计用量。只回“确认”时最多按 L1 执行，L2、L3 必须在回复里写出档位才生效。宿主不具备某项能力时，写出实际档位、损失与补偿。耦合的画面系统（光照、材质、后处理、特效、场景美术）默认只由主会话一人按顺序修改。
+
+品质类目标以画面效果为验收核心：先过画面验收（正常游玩视角、与参照并排、廉价感清单清零、独立评审与用户确认），功能检查只是前提；画面未通过的项不会因为功能做完或预算用尽而标为完成。
+
+证据和留档分开：一轮里的验证截图、评审图、短片和性能记录都是临时产物，收尾列清单给你看过再删；长期留档按项目的验收规范，没有约定时默认放 `dev-history/`（节点验收图、反馈截图）。录像只录 Goal 里写明的项。是否开隔离副本按任务临时判断，开了就收尾删除。
 
 ## 与 AI 游戏开发框架搭配
 
 [AI 游戏开发框架](https://github.com/Cooperzheng/ai-game-dev-framework)用于在持续开发中保存目标、维护设计与实现，并对照实际体验检查交付。game-goal 用于起草或审阅这些目标，两者可独立使用。
 
-1. 明确调用 game-goal，写清功能范围、玩家体验、美术视听目标和验收证据。
+1. 用 game-goal（自动触发或点名）写清功能范围、玩家体验、美术视听目标和验收证据。
 2. 用户确认后，将整体要求归入游戏项目的 `docs/PROJECT.md`，模块要求归入对应的 `docs/modules/模块名/DESIGN.md`；已有等效结构直接沿用。
 3. 后续按框架维护设计、实现与验证结果。未确认建议保留为候选或 AI 当前方案；目标调整后更新所属正文，避免维护两份重复的 Goal。
 
-框架不会自动安装或调用本 Skill。起草 Goal 与接入框架均不自动授权开发或发布。
+框架本身不会安装或调用本 Skill。起草 Goal 与接入框架均不自动授权开发或发布。
 
 ## 内容
 
-- [SKILL.md](SKILL.md)：入口与使用边界。
+- [SKILL.md](SKILL.md)：何时使用、流程与输出。
+- [编排档位与授权](references/orchestration.md)：档位、降级、禁区、授权条款与模板。
+- 执行宿主附录：[Claude Code](references/host-claude-code.md)、[Codex](references/host-codex.md)、[其他宿主](references/host-generic.md)。
 - [设计参考](references/design-checks.md)：目标、一致性、证据、迭代和停止条件。
-- [两份范例](references/examples.md)：首个 MVP 与单模块改进模板。
+- [三份范例](references/examples.md)：试玩反馈批量修改、首个 MVP、单模块提高。
 - [品质线与失败反查](references/quality-bars.md)：完成定义、回归保护、美术与体验检查。
-- [调用配置](agents/openai.yaml)：关闭隐式调用。
+- [Codex 调用配置](agents/openai.yaml)：隐式调用开关。
 
-模板应按项目取舍，未知项保留待定；测试和评分不能替代真实游玩与用户判断。范例不构成品质保证。
+模板应按项目取舍，未知项保留待定；测试和评分不能替代真实游玩与用户判断。范例不构成品质保证。宿主附录记录了核实时的版本，宿主更新后请按附录末尾的复查项核对。
 
 ## 许可
 
