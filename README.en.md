@@ -32,7 +32,7 @@ $game-goal Draft a goal for a game MVP, covering gameplay, player experience, vi
 /game-goal Review this goal. Address only important gaps and keep it concise.
 ```
 
-Once triggered, it diagnoses read-only, then presents a goal that starts with the decisions you need to confirm: execution host, orchestration level, usage and retention, and default decisions. It does not edit files or start orchestration before you confirm. Each goal ends with a fixed results table (item, feedback number, status, evidence, gap), which is also what you get when the work is delivered. Host permissions, budgets, and stopping rules take precedence.
+Drafting reuses existing diagnosis and investigates only gaps that affect the goal or its feasibility. It presents a draft once scope, expected results, protected behaviors, and acceptance are clear enough to judge; implementation details are marked for verification during execution. References are read as needed and reused within the same conversation when unchanged. The goal briefly lists the host, level, usage, retention, and key choices to confirm. No files are edited or orchestration started before confirmation. Each goal ends with a results table (item, feedback number, status, evidence, gap), reused at delivery. Host permissions, budgets, and stopping rules take precedence.
 
 To use it only when named:
 
@@ -48,7 +48,7 @@ To use it only when named:
 | L2 | Plus scripted orchestration for listed scenarios, such as review panels, broad research, and batch checks |
 | L3 | Plus session-wide autonomous orchestration, only for research, audit, or final acceptance, with user approval |
 
-Each goal recommends a level and explains why. Its confirmation block states whether subagents, scripted orchestration, and session-wide orchestration are used, where, with what limits, and the expected usage. A plain "confirm" runs at L1 at most; L2 and L3 take effect only when the reply names the level. When the host lacks a capability, the goal states the actual level, what is lost, and how it compensates. By default, coupled visual systems (lighting, materials, post-processing, effects, scene art) are changed sequentially by the main session only.
+Each goal briefly states the recommended level, enabled mechanisms, their purposes, limits, and expected usage; unused mechanisms are grouped together. Level tradeoffs are explained only for complex plans, and detailed terms appear once in the goal. A plain "confirm" runs at L1 at most; L2 and L3 take effect only when the reply names the level. When the host lacks a capability, the goal states the actual level, what is lost, and how it compensates. By default, coupled visual systems (lighting, materials, post-processing, effects, scene art) are changed sequentially by the main session only.
 
 For quality goals, visuals are the core of acceptance: an item must first pass visual acceptance (normal gameplay view, side by side with references, cheap-look checklist cleared, independent review and user confirmation). Functional checks are only the entry condition, and an item that fails visual acceptance is never marked done because its features work or the budget ran out.
 
