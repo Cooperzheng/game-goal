@@ -52,7 +52,7 @@ Each goal briefly states the recommended level, enabled mechanisms, their purpos
 
 For quality goals, visuals are the core of acceptance: an item must first pass visual acceptance (normal gameplay view, side by side with references, cheap-look checklist cleared, independent review and user confirmation). Functional checks are only the entry condition, and an item that fails visual acceptance is never marked done because its features work or the budget ran out.
 
-Evidence and archives are separate. Verification screenshots, review images, clips, and performance captures from a round are temporary; at the end of the round they are listed for you and deleted after you have seen the list. Long-term archives follow the project's acceptance rules, defaulting to `dev-history/` (milestone acceptance shots and feedback screenshots) when there are none. Video is recorded only for items the goal names. Whether to use isolated working copies is decided per task, and any that are opened are removed at the end of the round.
+Collect only enough evidence to judge acceptance. Reuse valid evidence and keep only the current candidate's evidence, necessary comparisons, and key failure samples; record only necessary clips for items named in the goal. Agree on the run's temporary directory and cleanup scope when confirming the goal, then remove superseded artifacts during execution. Keep evidence still needed for acceptance, referenced results, or unresolved issues. Long-term archives follow project acceptance rules, defaulting to `dev-history/`; do not archive every iteration. Isolated working copies are used only as needed and removed at the end of the round.
 
 ## What a goal should make clear
 
