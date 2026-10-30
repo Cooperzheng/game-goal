@@ -24,7 +24,7 @@ Includes `agents/openai.yaml` for invocation policy. Read references as needed. 
 
 ## Lessons and changes
 
-[Lessons and changes](docs/lessons.md) records anonymized problems, decisions, and limitations for maintainers. It is outside the installed skill and is not a second source of rules.
+[Lessons and changes](docs/lessons.md) records anonymized problems, decisions, and limitations for maintainers. Update the relevant entry alongside skill changes; merge recurring issues into existing entries rather than appending a new log each time. Keep these records outside the installed skill. They are not a second source of rules. See [repository maintenance rules](AGENTS.md).
 
 The [AI game development framework](https://github.com/Cooperzheng/ai-game-dev-framework) maintains project design, implementation, and verification records; this skill drafts and reviews goals. They can be used independently.
 

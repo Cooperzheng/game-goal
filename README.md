@@ -24,7 +24,7 @@ npx skills add Cooperzheng/game-goal --skill game-goal
 
 ## 痛点与演变
 
-[痛点与改变](docs/lessons.md)记录实际遇到的问题、规则调整及局限，面向维护者，不属于 Skill，也不是第二份规则来源。新增经验优先修订已有规则，避免不断追加补丁。
+[痛点与改变](docs/lessons.md)记录实际遇到的问题、规则调整及局限，面向维护者，不属于 Skill，也不是第二份规则来源。每次调整 Skill 同步维护相关条目，同类问题合并更新，不逐次追加记录，也不把记录放回 Skill。具体见 [仓库维护约定](AGENTS.md)。
 
 [AI 游戏开发框架](https://github.com/Cooperzheng/ai-game-dev-framework)负责项目设计、实现和验证记录；本 Skill 负责起草与审阅 Goal，两者可独立使用。已有项目结构直接沿用。
 
