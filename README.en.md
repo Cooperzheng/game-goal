@@ -20,7 +20,7 @@ Use it to draft, review, or condense a long-running game development goal, not f
 - [Quality and acceptance](skills/game-goal/references/quality-bars.md): standards, regression protection, evidence, and cleanup between iterations.
 - [Orchestration and execution](skills/game-goal/references/orchestration.md): L0–L3, authorization, budgets, stopping conditions, and a compact execution template.
 
-Includes `agents/openai.yaml` for invocation policy. Read references as needed. A goal handed to another session must include all applicable agreements. Passing tests, higher scores, or an exhausted budget do not establish quality acceptance.
+Includes `agents/openai.yaml` for invocation policy. Read references as needed. A goal handed to another session must include its regression scope, evidence reuse conditions, and retest triggers. Select checks by change impact while retaining necessary independent quality reviews and real-flow validation. Passing tests, higher scores, or an exhausted budget do not establish quality acceptance.
 
 ## Lessons and changes
 

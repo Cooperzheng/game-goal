@@ -20,7 +20,7 @@ npx skills add Cooperzheng/game-goal --skill game-goal
 - [品质与验收](skills/game-goal/references/quality-bars.md)：成品标准、回归保护、证据与过程清理。
 - [编排与执行](skills/game-goal/references/orchestration.md)：L0–L3、授权、预算、停止条件与执行模板。
 
-附带 `agents/openai.yaml` 调用配置。附录按任务读取；独立执行的 Goal 写全适用约定，不要求执行者另找 Skill。功能检查、评分与预算用尽都不能代替品质验收。
+附带 `agents/openai.yaml` 调用配置。附录按任务读取；独立执行的 Goal 写全适用约定，包括回归范围、证据复用与补测条件。验收按改动影响选择，保留必要的独立品质评审与真实流程验证。功能检查、评分与预算用尽都不能代替品质验收。
 
 ## 痛点与演变
 
