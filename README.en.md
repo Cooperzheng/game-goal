@@ -2,7 +2,7 @@
 
 [简体中文](README.md) | English
 
-A Chinese-language skill for turning game ideas and playtest feedback into executable goals with quality criteria, evidence, authorization, stopping conditions, and retention. Drafting requires user confirmation before implementation; it does not authorize publishing.
+A Chinese-language skill for turning game ideas and playtest feedback into a one-page executable goal: what to build, what good looks like, who judges it, the boundaries and when to stop. Drafting requires user confirmation before implementation; it does not authorize publishing.
 
 ## Install and use
 
@@ -14,13 +14,9 @@ For manual installation, copy only `skills/game-goal/` into your host's skill di
 
 Use it to draft, review, or condense a long-running game development goal, not for ordinary plans or small fixes. Verify execution mechanisms and host capabilities when starting the task.
 
-## Three core documents
+## Contents
 
-- [Entry point and goal outline](skills/game-goal/SKILL.md): scope, workflow, confirmation, and results.
-- [Quality and acceptance](skills/game-goal/references/quality-bars.md): standards, regression protection, evidence, and cleanup between iterations.
-- [Orchestration and execution](skills/game-goal/references/orchestration.md): L0–L3, authorization, budgets, stopping conditions, and a compact execution template.
-
-Includes `agents/openai.yaml` for invocation policy. Read references as needed. A goal handed to another session must include its regression scope, evidence reuse conditions, and retest triggers. Select checks by change impact while retaining necessary independent quality reviews and real-flow validation. Passing tests, higher scores, or an exhausted budget do not establish quality acceptance.
+A single [SKILL.md](skills/game-goal/SKILL.md) plus `agents/openai.yaml` for invocation policy. A goal states only what the executor cannot know: the intended product, the approved red lines, the boundaries, and when to come back to the user. Each item names its judge: hard metrics for tests and telemetry, the user for look and feel. Few test runs and few captures; the executor decides the form and number of captures. One total time cap; stop when the bar is met, the cap is reached, or work is stuck.
 
 ## Lessons and changes
 
