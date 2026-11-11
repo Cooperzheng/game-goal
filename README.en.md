@@ -2,7 +2,7 @@
 
 [简体中文](README.md) | English
 
-A Chinese-language skill for turning game ideas and playtest feedback into a one-page executable goal: what to build, what good looks like, who judges it, the boundaries and when to stop. Drafting requires user confirmation before implementation; it does not authorize publishing.
+A Chinese-language skill that helps you state clearly what you want — game requirements, playtest feedback, what you want to see — as a one-page goal for a long-running AI task. It does not prescribe how the AI works: the goal states what you want, what you care about, who judges it, what must not change and when to stop; implementation and verification are delegated to the executor. Drafting requires user confirmation before implementation; it does not authorize publishing.
 
 ## Install and use
 
@@ -16,7 +16,7 @@ Use it to draft, review, or condense a long-running game development goal, not f
 
 ## Contents
 
-A single [SKILL.md](skills/game-goal/SKILL.md) plus `agents/openai.yaml` for invocation policy. A goal states only what the executor cannot know: the intended product, the approved red lines, the boundaries, and when to come back to the user. Each item names its judge: hard metrics for tests and telemetry, the user for look and feel. Few test runs and few captures; the executor decides the form and number of captures. One total time cap; stop when the bar is met, the cap is reached, or work is stuck.
+A single [SKILL.md](skills/game-goal/SKILL.md) plus `agents/openai.yaml` for invocation policy. The test for each line: if the executor cannot know it without asking you, write it; if the executor can judge it well, leave it out. You judge look and feel, tests judge hard metrics; how to build, how much to test and capture is up to the executor.
 
 ## Lessons and changes
 
